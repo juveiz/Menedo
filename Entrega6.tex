@@ -1,0 +1,46 @@
+\documentclass[titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\title{Tarea 7}
+\author{Juan Velasco Izquierdo}
+
+
+\begin{document}
+\maketitle
+
+\paragraph{} \textbf{Sea $y_{n+3} - y_{n+2} = h(\frac{23}{12}f_{n+2} - \frac{4}{3}f_{n+1} + \frac{5}{12}f_{n})$. Supongamos que se verifican las hipótesis $(H_{MN})$. Ver si se verifica el criterio de la raíz y identificar su orden de consistencia.}
+\
+\paragraph{}Empecemos con el criterio de la raíz. Para ver que nuestro método lo cumple tenemos que ver que las raíces del primer polinomio característico sean de módulo menor que 1 y las que tengan módulo 1 sean simples.
+
+El primer polinomio característico de nuestro método es:
+
+$\rho(\xi) = \sum_{j=0}^k\alpha_j \xi^j = -\xi^2 + \xi^3 = \xi^2(\xi-1)$
+
+Como podemos ver sus raíces son 0 (raíz doble) y 1 (raíz simple), por lo que \textbf{cumple el criterio de la raíz}.
+\
+\paragraph{}Pasamos ahora a ver el orden de consistencia. Para ello, dado que nos encontramos a un método lineal multipaso (MLM), vamos a usar la siguiente proposición:
+
+\paragraph{Proposición:}Un MLM es consistente de orden $p\geq 1$ si y solo si
+$C_q=\frac{1}{q!}[\sum_{j=0}^{k}\alpha_{j}j^{q}-q\sum_{j=0}^{k}\beta_{j}j^{q-1}]=0$ con $q=0,1,\ldots,p$ y $C_{p+1} \neq 0$
+
+\paragraph{}Por tanto vamos a usar la proposición con nuestro método que tiene como $\alpha_i$ y $\beta_i$:
+
+$\alpha_0=0 \ \alpha_1=0 \ \alpha_2=-1 \ \alpha_3=1 \ \beta_0=\frac{5}{12} \ \beta_1=-\frac{4}{3} \ \beta_2=\frac{23}{12} \ \beta_3=0 \ $
+
+Vamos a calcular por separado cada $C_q$ y vamos a ver cual es distinto de 0 (no incluiremos los sumandos que son 0):
+
+\paragraph{$C_0$:} $C_0 = 1[-1*2^0+1*3^0]=0$
+
+\paragraph{$C_1$:} $C_1 = 1[-1*2^1+1*3^1 - 1(\frac{5}{12}*0^0 - \frac{4}{3}*1^0 + \frac{23}{12}*2^0] = 0$
+
+\paragraph{$C_2$:} $C_2 = \frac{1}{2!}[-1*2^2+1*3^2 - 1(\frac{5}{12}*0^1 - \frac{4}{3}*1^1 + \frac{23}{12}*2^1] = 0$
+
+\paragraph{$C_3$:} $C_3 = \frac{1}{3!}[-1*2^3+1*3^3 - 1(\frac{5}{12}*0^2 - \frac{4}{3}*1^2 + \frac{23}{12}*2^2] = 0$
+
+\paragraph{$C_4$:} $C_4 = \frac{1}{4!}[-1*2^4+1*3^4 - 1(\frac{5}{12}*0^3 - \frac{4}{3}*1^3 + \frac{23}{12}*2^3] = \frac{9}{24}$
+
+\paragraph{}Como $C_i = 0$ para $i=1,2,3$ y $C_4 \neq 0$ entonces el método es \textbf{consistente de orden 3}.
+
+
+\end{document}
